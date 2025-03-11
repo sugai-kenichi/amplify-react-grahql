@@ -4,7 +4,7 @@ backend:
     build:
       commands:
         - "# Execute Amplify CLI with the helper script"
-        - amplify pull --appId dgsu5unzwjnpb --envName dev
+        - amplify pull --appId dgsu5unzwjnpb --envName dev -y
         - amplifyPush --simple
 frontend:
   phases:
