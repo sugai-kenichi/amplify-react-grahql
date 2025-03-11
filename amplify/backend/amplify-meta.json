@@ -40,7 +40,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9f93d-deployment/amplify-cfn-templates/auth/amplifyappabc525a7-cloudformation-template.json",
         "logicalId": "authamplifyappabc525a7"
       },
-      "lastPushTimeStamp": "2025-03-11T06:35:30.663Z",
+      "lastPushTimeStamp": "2025-03-11T07:13:36.519Z",
       "output": {
         "UserPoolId": "ap-northeast-1_rDDkbm3ET",
         "AppClientIDWeb": "31f02mpfo0jf6l278meijmgjo3",
