@@ -40,7 +40,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9f93d-deployment/amplify-cfn-templates/auth/amplifyappabc525a7-cloudformation-template.json",
         "logicalId": "authamplifyappabc525a7"
       },
-      "lastPushTimeStamp": "2025-03-11T07:13:36.519Z",
+      "lastPushTimeStamp": "2025-03-12T04:12:12.034Z",
       "output": {
         "UserPoolId": "ap-northeast-1_rDDkbm3ET",
         "AppClientIDWeb": "31f02mpfo0jf6l278meijmgjo3",
@@ -51,6 +51,33 @@
         "UserPoolName": "amplifyappabc525a7_userpool_abc525a7"
       },
       "lastPushDirHash": "nCfS7PjDtyesQaGPUQ0Mj0rV3R8="
+    }
+  },
+  "api": {
+    "amplifyapp": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "ocvgqjetxjgyrof235vzy2omcu",
+        "GraphQLAPIEndpointOutput": "https://dti3fgcmifcdfcdjrc4gvqw4xu.appsync-api.ap-northeast-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-nni5erjjare4vgd4kqrdsmyhmq"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9f93d-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiamplifyapp"
+      },
+      "lastPushTimeStamp": "2025-03-12T04:12:13.381Z",
+      "lastPushDirHash": "rI+47uRkIB1enEqYQRmVtVtphgU="
     }
   }
 }
