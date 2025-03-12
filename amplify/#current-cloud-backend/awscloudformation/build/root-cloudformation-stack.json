@@ -252,6 +252,20 @@
         }
       }
     },
+    "apiamplifyapp": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9f93d-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "AppSyncApiName": "amplifyapp",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "S3DeploymentBucket": "amplify-amplifyapp-dev-9f93d-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/16fa521259a102b843ec3803219a6f1c0ca48cf6",
+          "env": "dev"
+        }
+      }
+    },
     "UpdateRolesWithIDPFunction": {
       "DependsOn": [
         "AuthRole",
