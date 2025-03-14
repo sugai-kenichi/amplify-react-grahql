@@ -7,6 +7,7 @@ import {
   Button,
   Flex,
   Heading,
+  Image,
   Text,
   TextField,
   View,
@@ -19,6 +20,7 @@ import {
 } from "./graphql/mutations";
 
 import { Amplify } from "aws-amplify";
+import { getUrl, uploadData, remove } from 'aws-amplify/storage';
 import { generateClient } from "aws-amplify/api";
 import awsconfig from "./amplifyconfiguration.json";
 
@@ -36,16 +38,37 @@ const App = ({ signOut }) => {
   async function fetchNotes() {
     const apiData = await client.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
+    await Promise.all(
+      notesFromAPI.map(async (note) => {
+        if (note.image) {
+          const url = await getUrl({
+            path: note.image,
+            options: {
+              validateObjectExistence : false,
+              expiresIn: 20,
+            },
+          } );
+          note.imagepath = url.url.toString();
+        }
+        return note;
+      })
+    );
     setNotes(notesFromAPI);
   }
 
   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
+    const image = form.get("image");
     const data = {
       name: form.get("name"),
       description: form.get("description"),
+      image: image.name ,
     };
+    if (!!data.image) {
+      const operation = uploadData({path: data.image , data: image});
+      await operation.result;
+    }
     await client.graphql({
       query: createNoteMutation,
       variables: { input: data },
@@ -54,9 +77,10 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteNote({ id }) {
+  async function deleteNote({ id, name, image }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
+    await remove({path: image});
     await client.graphql({
       query: deleteNoteMutation,
       variables: { input: { id } },
@@ -84,6 +108,12 @@ const App = ({ signOut }) => {
             variation="quiet"
             required
           />
+          <View
+            name="image"
+            as="input"
+            type="file"
+            style={{ alignSelf: "end" }}
+          />
           <Button type="submit" variation="primary">
             Create Note
           </Button>
@@ -102,6 +132,13 @@ const App = ({ signOut }) => {
               {note.name}
             </Text>
             <Text as="span">{note.description}</Text>
+            {note.image && (
+              <Image
+                src={note.imagepath}
+                alt={`${note.image}`}
+                style={{ width: 400 }}
+              />
+            )}
             <Button variation="link" onClick={() => deleteNote(note)}>
               Delete note
             </Button>
