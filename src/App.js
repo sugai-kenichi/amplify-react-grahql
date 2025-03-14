@@ -41,8 +41,14 @@ const App = ({ signOut }) => {
     await Promise.all(
       notesFromAPI.map(async (note) => {
         if (note.image) {
-          const url = await getUrl(note.name);
-          note.image = url;
+          const url = await getUrl({
+            path: note.image,
+            options: {
+              validateObjectExistence : false,
+              expiresIn: 20,
+            },
+          } );
+          note.imagepath = url.url.toString();
         }
         return note;
       })
@@ -57,10 +63,10 @@ const App = ({ signOut }) => {
     const data = {
       name: form.get("name"),
       description: form.get("description"),
-      image: image.name,
+      image: image.name ,
     };
     if (!!data.image) {
-      const operation = uploadData(data.name, image);
+      const operation = uploadData({path: data.image , data: image});
       await operation.result;
     }
     await client.graphql({
@@ -71,10 +77,10 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteNote({ id, name }) {
+  async function deleteNote({ id, name, image }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
-    await remove(name);
+    await remove({path: image});
     await client.graphql({
       query: deleteNoteMutation,
       variables: { input: { id } },
@@ -128,8 +134,8 @@ const App = ({ signOut }) => {
             <Text as="span">{note.description}</Text>
             {note.image && (
               <Image
-                src={note.image}
-                alt={`visual aid for ${notes.name}`}
+                src={note.imagepath}
+                alt={`${note.image}`}
                 style={{ width: 400 }}
               />
             )}
