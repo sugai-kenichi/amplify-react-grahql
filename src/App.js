@@ -12,11 +12,14 @@ import {
   TextField,
   View,
   withAuthenticator,
+  useAuthenticator,
 } from "@aws-amplify/ui-react";
-import { listNotes } from "./graphql/queries";
+import { getTestTable, listNotes, listTestTables } from "./graphql/queries";
 import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
+  createTestTable as createTestTableMution,
+  deleteTestTable as deleteTestTableMutation,
 } from "./graphql/mutations";
 
 import { Amplify } from "aws-amplify";
@@ -29,7 +32,9 @@ Amplify.configure(awsconfig);
 const client = generateClient();
 
 const App = ({ signOut }) => {
+  const { user, route } = useAuthenticator((context) => [context.user]);
   const [notes, setNotes] = useState([]);
+  const [testTables, setTestTables] = useState([]);
 
   useEffect(() => {
     fetchNotes();
@@ -38,6 +43,8 @@ const App = ({ signOut }) => {
   async function fetchNotes() {
     const apiData = await client.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
+    const apiDateTest = await client.graphql({ query: listTestTables });
+    const grahpqlTestTableData = apiDateTest.data.listTestTables.items;
     await Promise.all(
       notesFromAPI.map(async (note) => {
         if (note.image) {
@@ -54,6 +61,7 @@ const App = ({ signOut }) => {
       })
     );
     setNotes(notesFromAPI);
+    setTestTables(grahpqlTestTableData);
   }
 
   async function createNote(event) {
@@ -77,6 +85,20 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
+  async function createTestTable(event) {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    const data = {
+      firstName: form.get("fristname"),
+    };
+    await client.graphql({
+      query: createTestTableMution,
+      variables: { input: data },
+    });
+    fetchNotes();
+    event.target.reset();
+  }
+
   async function deleteNote({ id, name, image }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
@@ -87,9 +109,23 @@ const App = ({ signOut }) => {
     });
   }
 
+  
+  async function deleteTestTable({ id }) {
+    const newTestTables = testTables.filter((testTable) => testTable.id !== id);
+    setTestTables(newTestTables);
+    await client.graphql({
+      query: deleteTestTableMutation ,
+      variables: { input: { id } },
+    });
+  }
+
   return (
     <View className="App">
       <Heading level={1}>My Notes App</Heading>
+      <Text>user.username====={user.username}</Text>
+      <Text>user.useId====={user.userId}</Text>
+      
+      {/* <Text>route ====={route.}</Text> */}
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <TextField
@@ -119,6 +155,21 @@ const App = ({ signOut }) => {
           </Button>
         </Flex>
       </View>
+      <View as="form" margin="3rem 0" onSubmit={createTestTable}>
+        <Flex direction="row" justifyContent="center">
+          <TextField
+            name="fristname"
+            placeholder="First Name"
+            label="First Name"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <Button type="submit" variation="primary">
+            Create TestTable
+          </Button>
+        </Flex>
+      </View>
       <Heading level={2}>Current Notes</Heading>
       <View margin="3rem 0">
         {notes.map((note) => (
@@ -141,6 +192,15 @@ const App = ({ signOut }) => {
             )}
             <Button variation="link" onClick={() => deleteNote(note)}>
               Delete note
+            </Button>
+          </Flex>
+        ))}
+        {testTables.map((testTable) => (
+          <Flex>
+            <Text as="span">{testTable.id}</Text>
+            <Text as="span">{testTable.firstName}</Text>
+            <Button variation="link" onClick={() => deleteTestTable(testTable)}>
+              Delete testTable
             </Button>
           </Flex>
         ))}
