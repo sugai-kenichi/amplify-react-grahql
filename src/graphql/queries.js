@@ -8,6 +8,7 @@ export const getNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
       createdAt
       updatedAt
       __typename
@@ -26,6 +27,37 @@ export const listNotes = /* GraphQL */ `
         name
         description
         image
+        imagepath
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getTestTable = /* GraphQL */ `
+  query GetTestTable($id: ID!) {
+    getTestTable(id: $id) {
+      id
+      firstName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listTestTables = /* GraphQL */ `
+  query ListTestTables(
+    $filter: ModelTestTableFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTestTables(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        firstName
         createdAt
         updatedAt
         __typename

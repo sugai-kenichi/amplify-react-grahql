@@ -8,6 +8,7 @@ export const onCreateNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
       createdAt
       updatedAt
       __typename
@@ -21,6 +22,7 @@ export const onUpdateNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
       createdAt
       updatedAt
       __typename
@@ -34,6 +36,46 @@ export const onDeleteNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateTestTable = /* GraphQL */ `
+  subscription OnCreateTestTable(
+    $filter: ModelSubscriptionTestTableFilterInput
+  ) {
+    onCreateTestTable(filter: $filter) {
+      id
+      firstName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateTestTable = /* GraphQL */ `
+  subscription OnUpdateTestTable(
+    $filter: ModelSubscriptionTestTableFilterInput
+  ) {
+    onUpdateTestTable(filter: $filter) {
+      id
+      firstName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteTestTable = /* GraphQL */ `
+  subscription OnDeleteTestTable(
+    $filter: ModelSubscriptionTestTableFilterInput
+  ) {
+    onDeleteTestTable(filter: $filter) {
+      id
+      firstName
       createdAt
       updatedAt
       __typename

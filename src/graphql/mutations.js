@@ -11,6 +11,7 @@ export const createNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
       createdAt
       updatedAt
       __typename
@@ -27,6 +28,7 @@ export const updateNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
       createdAt
       updatedAt
       __typename
@@ -43,6 +45,49 @@ export const deleteNote = /* GraphQL */ `
       name
       description
       image
+      imagepath
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createTestTable = /* GraphQL */ `
+  mutation CreateTestTable(
+    $input: CreateTestTableInput!
+    $condition: ModelTestTableConditionInput
+  ) {
+    createTestTable(input: $input, condition: $condition) {
+      id
+      firstName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateTestTable = /* GraphQL */ `
+  mutation UpdateTestTable(
+    $input: UpdateTestTableInput!
+    $condition: ModelTestTableConditionInput
+  ) {
+    updateTestTable(input: $input, condition: $condition) {
+      id
+      firstName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteTestTable = /* GraphQL */ `
+  mutation DeleteTestTable(
+    $input: DeleteTestTableInput!
+    $condition: ModelTestTableConditionInput
+  ) {
+    deleteTestTable(input: $input, condition: $condition) {
+      id
+      firstName
       createdAt
       updatedAt
       __typename
