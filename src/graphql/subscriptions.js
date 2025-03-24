@@ -7,10 +7,11 @@ export const onCreateNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -21,10 +22,11 @@ export const onUpdateNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -35,49 +37,68 @@ export const onDeleteNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const onCreateTestTable = /* GraphQL */ `
-  subscription OnCreateTestTable(
-    $filter: ModelSubscriptionTestTableFilterInput
+export const onCreateInfomation = /* GraphQL */ `
+  subscription OnCreateInfomation(
+    $filter: ModelSubscriptionInfomationFilterInput
   ) {
-    onCreateTestTable(filter: $filter) {
+    onCreateInfomation(filter: $filter) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const onUpdateTestTable = /* GraphQL */ `
-  subscription OnUpdateTestTable(
-    $filter: ModelSubscriptionTestTableFilterInput
+export const onUpdateInfomation = /* GraphQL */ `
+  subscription OnUpdateInfomation(
+    $filter: ModelSubscriptionInfomationFilterInput
   ) {
-    onUpdateTestTable(filter: $filter) {
+    onUpdateInfomation(filter: $filter) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const onDeleteTestTable = /* GraphQL */ `
-  subscription OnDeleteTestTable(
-    $filter: ModelSubscriptionTestTableFilterInput
+export const onDeleteInfomation = /* GraphQL */ `
+  subscription OnDeleteInfomation(
+    $filter: ModelSubscriptionInfomationFilterInput
   ) {
-    onDeleteTestTable(filter: $filter) {
+    onDeleteInfomation(filter: $filter) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }

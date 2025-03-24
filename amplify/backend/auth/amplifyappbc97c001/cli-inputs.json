@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "amplifyappabc525a7_identitypool_abc525a7",
+    "identityPoolName": "amplifyappbc97c001_identitypool_bc97c001",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "amplifabc525a7",
-    "userPoolName": "amplifyappabc525a7_userpool_abc525a7",
+    "resourceNameTruncated": "amplifbc97c001",
+    "userPoolName": "amplifyappbc97c001_userpool_bc97c001",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,12 +31,15 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "amplifabc525a7_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "amplifbc97c001_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "abc525a7",
-    "resourceName": "amplifyappabc525a7",
+    "sharedId": "bc97c001",
+    "resourceName": "amplifyappbc97c001",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
+    "usernameAttributes": [
+      "email"
+    ],
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
