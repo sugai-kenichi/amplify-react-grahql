@@ -10,10 +10,11 @@ export const createNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -27,10 +28,11 @@ export const updateNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -44,52 +46,71 @@ export const deleteNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const createTestTable = /* GraphQL */ `
-  mutation CreateTestTable(
-    $input: CreateTestTableInput!
-    $condition: ModelTestTableConditionInput
+export const createInfomation = /* GraphQL */ `
+  mutation CreateInfomation(
+    $input: CreateInfomationInput!
+    $condition: ModelInfomationConditionInput
   ) {
-    createTestTable(input: $input, condition: $condition) {
+    createInfomation(input: $input, condition: $condition) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const updateTestTable = /* GraphQL */ `
-  mutation UpdateTestTable(
-    $input: UpdateTestTableInput!
-    $condition: ModelTestTableConditionInput
+export const updateInfomation = /* GraphQL */ `
+  mutation UpdateInfomation(
+    $input: UpdateInfomationInput!
+    $condition: ModelInfomationConditionInput
   ) {
-    updateTestTable(input: $input, condition: $condition) {
+    updateInfomation(input: $input, condition: $condition) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const deleteTestTable = /* GraphQL */ `
-  mutation DeleteTestTable(
-    $input: DeleteTestTableInput!
-    $condition: ModelTestTableConditionInput
+export const deleteInfomation = /* GraphQL */ `
+  mutation DeleteInfomation(
+    $input: DeleteInfomationInput!
+    $condition: ModelInfomationConditionInput
   ) {
-    deleteTestTable(input: $input, condition: $condition) {
+    deleteInfomation(input: $input, condition: $condition) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }

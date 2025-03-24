@@ -7,10 +7,11 @@ export const getNote = /* GraphQL */ `
       id
       name
       description
-      image
-      imagepath
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -26,43 +27,120 @@ export const listNotes = /* GraphQL */ `
         id
         name
         description
-        image
-        imagepath
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
       __typename
     }
   }
 `;
-export const getTestTable = /* GraphQL */ `
-  query GetTestTable($id: ID!) {
-    getTestTable(id: $id) {
+export const syncNotes = /* GraphQL */ `
+  query SyncNotes(
+    $filter: ModelNoteFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncNotes(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        description
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getInfomation = /* GraphQL */ `
+  query GetInfomation($id: ID!) {
+    getInfomation(id: $id) {
       id
-      firstName
+      userId
+      title
+      detail
+      filePaths
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
 `;
-export const listTestTables = /* GraphQL */ `
-  query ListTestTables(
-    $filter: ModelTestTableFilterInput
+export const listInfomations = /* GraphQL */ `
+  query ListInfomations(
+    $filter: ModelInfomationFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTestTables(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listInfomations(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        firstName
+        userId
+        title
+        detail
+        filePaths
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
         __typename
       }
       nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncInfomations = /* GraphQL */ `
+  query SyncInfomations(
+    $filter: ModelInfomationFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncInfomations(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        userId
+        title
+        detail
+        filePaths
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
       __typename
     }
   }
