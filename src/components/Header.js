@@ -4,17 +4,17 @@ import React from "react";
 
 const useStyle = makeStyles(({theme}) => ({
     header: {
-        display: "flex",
       },
       appBar: {
-        padding: "8px",
         background: "#39284f",
-        marginBottom: "104px",
+      },
+      toolbar: {
       },
       headerTitle: {
         fontSize: "34px" ,
-        flexGrow: 1,
-        marginLeft: "8px",
+      },
+      headerUser: {
+        marginLeft: "10px",
       },
 }));
 
@@ -22,11 +22,12 @@ export const Header = () => {
     const classes = useStyle();
     return (
         <div className={classes.header}>
-            <AppBar className={classes.appBar} position="static">
-                <Toolbar>
-                    <Typography className={classes.headerTitle}>Test Title</Typography>
-                    <Button color="inherit" href="#">Github</Button>
-                    <Button color="inherit" href="#">Twitter</Button>
+            <AppBar className={classes.appBar}  position="static">
+                <Toolbar className={classes.toolbar}>
+                    <Typography className={classes.headerTitle}>Majestic</Typography>
+                    <div style={{ flexGrow: 1 }}></div>
+                    <Button className={classes.headerUser} color="inherit" href="#">ユーザー名</Button>
+                    <Button className={classes.headerUser} color="inherit" href="#">設定</Button>
                 </Toolbar>
             </AppBar>
         </div>
