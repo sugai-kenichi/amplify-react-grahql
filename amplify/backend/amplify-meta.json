@@ -35,7 +35,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9cd66-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiamplifyapp"
       },
-      "lastPushTimeStamp": "2025-03-24T09:44:47.124Z",
+      "lastPushTimeStamp": "2025-03-24T10:08:21.915Z",
       "lastPushDirHash": "c6W39o6ZzH2ILjOrD/+it4rHij8="
     }
   },
@@ -48,7 +48,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9cd66-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
         "logicalId": "hostingamplifyhosting"
       },
-      "lastPushTimeStamp": "2025-03-24T09:44:44.530Z",
+      "lastPushTimeStamp": "2025-03-24T10:08:21.918Z",
       "output": {},
       "lastPushDirHash": "DD411qpsEEgGGyKik9OHgLc3GwI="
     }
@@ -83,7 +83,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyapp-dev-9cd66-deployment/amplify-cfn-templates/auth/amplifyappbc97c001-cloudformation-template.json",
         "logicalId": "authamplifyappbc97c001"
       },
-      "lastPushTimeStamp": "2025-03-24T09:44:44.532Z",
+      "lastPushTimeStamp": "2025-03-24T10:08:21.921Z",
       "output": {
         "UserPoolId": "ap-northeast-1_UEeho8Woy",
         "AppClientIDWeb": "d7c8frc7vdvo8i10n22fupedp",
