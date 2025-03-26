@@ -6,12 +6,14 @@ const useStyle = makeStyles(({theme}) => ({
     header: {
       },
       appBar: {
-        background: "#39284f",
+        
       },
       toolbar: {
+        backgroundColor: "#161d26",
+        minHeight: "36px",
       },
       headerTitle: {
-        fontSize: "34px" ,
+        fontSize: "20px" ,
       },
       headerUser: {
         marginLeft: "10px",
@@ -22,7 +24,7 @@ export const Header = () => {
     const classes = useStyle();
     return (
         <div className={classes.header}>
-            <AppBar className={classes.appBar}  position="static">
+            <AppBar className={classes.appBar} backgroundColor="inherit"  position="static">
                 <Toolbar className={classes.toolbar}>
                     <Typography className={classes.headerTitle}>Majestic</Typography>
                     <div style={{ flexGrow: 1 }}></div>

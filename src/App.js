@@ -11,6 +11,9 @@ import awsconfig from "./amplifyconfiguration.json";
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 
+import Infomation from "./components/Infomation";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom"
+
 Amplify.configure(awsconfig);
 
 const App = ({ signOut }) => {
@@ -20,7 +23,13 @@ const App = ({ signOut }) => {
     <div className="App">
       <Header />
       <div className="main">
-        <Main />
+        
+      <Router>
+        <Routes>
+          <Route path='' Component={Main} />
+          <Route path="/Infomation"  Component={Infomation } />
+        </Routes>
+      </Router>
       </div>
     </div>
   );
