@@ -11,7 +11,7 @@ const useStyle = makeStyles(({theme}) => ({
         
       },
       toolbar: {
-        backgroundColor: "#161d26",
+        backgroundColor: "#e63200",
         minHeight: "36px",
       },
       headerTitle: {
@@ -63,7 +63,7 @@ export const Header = () => {
         <div className={classes.header}>
             <AppBar className={classes.appBar} backgroundColor="inherit"  position="static">
                 <Toolbar className={classes.toolbar}>
-                    <Typography className={classes.headerTitle}>Majestic</Typography>
+                    <Typography className={classes.headerTitle}>BREXA</Typography>
                     <IconButton 
                       onClick={toggleDrawer(true)}
                       backgroundColor="#ffffff"

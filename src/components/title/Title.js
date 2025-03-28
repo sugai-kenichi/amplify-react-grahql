@@ -11,7 +11,7 @@ const useStyle = makeStyles((theme) => ({
       
     },
     toolbar: {
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#e0e1e2",
       minHeight: "36px",
     },
     headerTitle: {
