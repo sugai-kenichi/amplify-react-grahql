@@ -23,17 +23,16 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const pages = [
-    {title: 'Top', to: '/', text: 'Top' },
-    {title: 'Infomation', to: '/Infomation', text: 'Infomation' },
-    {title: 'Job', to: '/contact', text: 'Job' },
-    {title: 'Blog', to: '/contact', text: 'Blog' },
-    {title: 'Contact', to: '/contact', text: 'Contact' },
+    {title: 'インフォメーション', to: '/Infomation', text: '各種周知事項はこちら' },
+    {title: '各種申請', to: '/contact', text: '各種申請はこちら' },
+    {title: '社員情報', to: '/contact', text: '社員情報はこちら' },
+    {title: '社内規定', to: '/contact', text: '社内規定はこちら' },
 ];
 
 const LinkComponent = ({page}) => {
     return (
-        <Grid2 item>
-            <Card sx={{ minWidth: 400 }}>
+        <Grid2 item xs={12} sm={6} md={4}>
+            <Card variant="outlined" sx={{ width: 400, minHeight: 200 }}>
                 <CardActionArea href={page.to}>
                     <CardHeader title={page.title} />
                     <CardContent>
@@ -78,13 +77,8 @@ export const Title = () => {
                     </AppBar>
                 </Box>
             </div>
-            <Box>
-                <Toolbar />{/* 高さ確保用 */}
-                <div>左側</div>
-            </Box>
             <Box sx={{ flex: "1 1 0", display: "flex", flexDirection: "column" }}>
-                <Toolbar />{/* 高さ確保用 */}
-                <Grid2 container Spacing={20}>
+                <Grid2 container Spacing={20} justifyContent="center">
                     {filteredPages.map((page) => (
                         <LinkComponent page={page} key={page.title}/>
                     ))}

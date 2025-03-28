@@ -23,13 +23,12 @@ const App = ({ signOut }) => {
     <div className="App">
       <Header />
       <div className="main">
-        
-      <Router>
-        <Routes>
-          <Route path='' Component={Main} />
-          <Route path="/Infomation"  Component={Infomation } />
-        </Routes>
-      </Router>
+        <Router>
+          <Routes>
+            <Route path='' Component={Main} />
+            <Route path="/Infomation"  Component={Infomation } />
+          </Routes>
+        </Router>
       </div>
     </div>
   );
